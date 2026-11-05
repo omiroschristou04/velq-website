@@ -17,6 +17,7 @@ publish only `dist/client`, never the repository root or server output.
 <!-- LOVABLE:END -->
 
 ## Project rules
+- The approved compact identity is `public/brand/velq-mark.svg` (rounded black tile, smooth red V). Use the shared `Wordmark` for compact headers; derive favicon/Apple icons from that SVG. Preserve the large editorial VELQ wordmark.
 - Public funnel (/find-your-roles, /your-roles, /membership) uses only `src/lib/velq/role-finder.json` and browser localStorage; paid lesson content must never be bundled in public code, because client-hidden content is not a paywall.
 - Checkout release is controlled only in `src/lib/velq/checkout-config.ts`; never build Whop URLs from IDs. Later server integration criteria live in `docs/member-onboarding-integration.md`.
 - Public presentation scenes live in `src/components/public-study`; use one passive frame-coalesced scroll observer and CSS local progress, with static mobile/reduced-motion reading order, to avoid competing scroll systems.

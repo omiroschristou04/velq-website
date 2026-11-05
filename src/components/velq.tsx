@@ -1,14 +1,12 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, type ReactNode } from "react";
 
+/** The approved black-tile / red-V mark is shared by every compact brand placement. */
 export function Wordmark({ className = "" }: { className?: string }) {
   return (
-    <span className={`inline-flex items-center gap-2 display text-2xl tracking-tight ${className}`}>
-      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5">
-        <rect x="1" y="1" width="22" height="22" className="fill-ink" />
-        <path d="M5 6 L12 19 L19 6" className="stroke-signal" strokeWidth="3" fill="none" />
-      </svg>
-      VELQ
+    <span className={`brand-lockup ${className}`}>
+      <img src="/brand/velq-mark.svg?v=20261105" alt="" aria-hidden="true" width="32" height="32" className="brand-symbol" />
+      <span>VELQ</span>
     </span>
   );
 }
@@ -92,3 +90,4 @@ export function Motif({ kind, className = "" }: { kind: "orbit" | "steps" | "gri
     </svg>
   );
 }
+

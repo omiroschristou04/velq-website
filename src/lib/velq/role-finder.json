@@ -1,0 +1,392 @@
+{
+  "questions": [
+    {
+      "title": "Analyse a business",
+      "prompt": "I enjoy working out how a company makes money and what drives its value.",
+      "hint": "Try comparing the revenue drivers of two businesses."
+    },
+    {
+      "title": "Form an investment view",
+      "prompt": "I enjoy following markets, weighing evidence and revising an investment view.",
+      "hint": "Try explaining what would change a view you currently hold."
+    },
+    {
+      "title": "Understand a client",
+      "prompt": "I enjoy listening to someone’s needs and building a working relationship.",
+      "hint": "Think about a time you clarified what another person really needed."
+    },
+    {
+      "title": "Work mathematically",
+      "prompt": "I enjoy probability, statistics and explaining mathematical assumptions.",
+      "hint": "Think about solving a problem and checking why the method applies."
+    },
+    {
+      "title": "Build with code",
+      "prompt": "I enjoy programming, debugging and testing data or software.",
+      "hint": "Rate the task itself, even if your current skill level is early."
+    },
+    {
+      "title": "Coordinate a transaction",
+      "prompt": "I enjoy detailed, deadline-driven projects involving several stakeholders.",
+      "hint": "Think about organising information, revisions and hand-offs."
+    },
+    {
+      "title": "Challenge a risk",
+      "prompt": "I enjoy questioning a proposed decision and investigating what could go wrong.",
+      "hint": "Think about a useful challenge supported by evidence."
+    },
+    {
+      "title": "Decide as information moves",
+      "prompt": "I enjoy responding to fast-changing information and making timely decisions.",
+      "hint": "Distinguish enjoying the pace from simply tolerating pressure."
+    },
+    {
+      "title": "Make a process reliable",
+      "prompt": "I enjoy checking details, investigating mismatches and preventing repeat errors.",
+      "hint": "Think about catching a problem and improving the process."
+    },
+    {
+      "title": "Explain a recommendation",
+      "prompt": "I enjoy turning complex information into a clear, defensible recommendation.",
+      "hint": "Think about adapting an explanation to a particular audience."
+    }
+  ],
+  "roles": [
+    {
+      "id": "ib",
+      "name": "Investment banking",
+      "office": "TYPICALLY FRONT OFFICE / ADVISORY & FINANCING",
+      "work": "Advise companies and financial sponsors on transactions and financing. Analyst work can involve research, financial modelling, valuation, presentations and managing transaction details.",
+      "overlap": "Corporate finance and private markets share company analysis and valuation. Banking advises clients on transactions; investors decide whether to commit capital.",
+      "future": "Research corporate advisory, capital markets or sector coverage. Later moves depend on experience, performance and available roles.",
+      "prepare": "Start here: explain financial statements, enterprise versus equity value and one valuation approach.",
+      "weights": [
+        5,
+        2,
+        2,
+        2,
+        1,
+        5,
+        3,
+        2,
+        4,
+        5
+      ]
+    },
+    {
+      "id": "am",
+      "name": "Asset management",
+      "office": "INVESTMENT TEAMS / TYPICALLY FRONT OFFICE",
+      "work": "Research investments and build or support portfolios for clients. Work varies by asset class and may combine company analysis, macro research, portfolio construction and risk monitoring.",
+      "overlap": "Equity research develops investment views; risk teams challenge exposures. Portfolio management adds allocation, sizing and client mandate constraints.",
+      "future": "Explore research analyst, investment specialist, multi-asset or portfolio support routes. Portfolio responsibility normally develops with experience.",
+      "prepare": "Start here: compare two investments and discuss return drivers, risks and portfolio fit.",
+      "weights": [
+        4,
+        5,
+        3,
+        3,
+        2,
+        2,
+        4,
+        3,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "wm",
+      "name": "Wealth management",
+      "office": "CLIENT & INVESTMENT ROLES / OFTEN FRONT OFFICE",
+      "work": "Help individuals and families organise investments and financial objectives. Roles can focus on relationship management, investment advice, portfolio management or financial planning.",
+      "overlap": "Asset management shares investment analysis. Wealth adds personal circumstances, suitability, client communication and longer-term relationships.",
+      "future": "Explore assistant relationship manager, investment analyst and planning pathways. Advice responsibilities depend on training and regulatory permissions.",
+      "prepare": "Start here: explain risk tolerance, diversification and how you would clarify a client’s needs.",
+      "weights": [
+        2,
+        3,
+        5,
+        1,
+        1,
+        2,
+        3,
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "id": "risk",
+      "name": "Risk management",
+      "office": "OFTEN MIDDLE OFFICE / INDEPENDENT OVERSIGHT",
+      "work": "Identify, measure and challenge exposures such as market, credit, liquidity and operational risk. Work can range from data analysis and modelling to limits, governance and reporting.",
+      "overlap": "Quant, treasury, compliance and investment teams all use risk information. Independent risk has a distinct challenge and oversight role.",
+      "future": "Explore market, credit, model or enterprise risk. Career paths depend on technical depth, product knowledge and the kind of risk you specialise in.",
+      "prepare": "Start here: describe a loss scenario, its drivers, controls and the limits of a risk measure.",
+      "weights": [
+        3,
+        3,
+        2,
+        4,
+        3,
+        1,
+        5,
+        3,
+        5,
+        4
+      ]
+    },
+    {
+      "id": "st",
+      "name": "Sales & trading",
+      "office": "TYPICALLY FRONT OFFICE / MARKETS",
+      "work": "Support clients’ market activity through sales, trading, structuring or execution. Tasks depend on product and desk, and combine market knowledge, communication, risk and pricing.",
+      "overlap": "Research informs views; quant supports models and pricing; risk provides oversight. Sales and trading are distinct roles with different daily emphasis.",
+      "future": "Explore desk-specific sales, trading, structuring and electronic markets. Product knowledge and client needs shape progression.",
+      "prepare": "Start here: explain a recent market move and how it could affect a client or trading position.",
+      "weights": [
+        2,
+        5,
+        4,
+        4,
+        3,
+        3,
+        4,
+        5,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "quant",
+      "name": "Quantitative finance",
+      "office": "FRONT OR MIDDLE OFFICE / TEAM DEPENDENT",
+      "work": "Use mathematics, statistics and programming to analyse data, model products or develop investment and risk methods. Quant research, development and model validation are different jobs.",
+      "overlap": "Trading, systematic investing, risk and technology share coding and models. The objective and who uses the model determine the role.",
+      "future": "Explore quant research, pricing, model validation or quantitative development. Entry requirements can be substantially mathematical.",
+      "prepare": "Start here: implement a small model, explain its assumptions and test its behaviour.",
+      "weights": [
+        2,
+        4,
+        1,
+        5,
+        5,
+        1,
+        4,
+        4,
+        4,
+        3
+      ]
+    },
+    {
+      "id": "research",
+      "name": "Equity & credit research",
+      "office": "INVESTMENT RESEARCH / OFTEN FRONT OFFICE",
+      "work": "Analyse companies, industries or issuers and form a reasoned view. Equity research focuses on ownership and valuation; credit research focuses on repayment, downside and debt terms.",
+      "overlap": "Banking also analyses companies, while asset management uses research to make portfolio decisions. Research depth, audience and incentives differ.",
+      "future": "Explore sell-side or buy-side research, sector coverage and credit analysis. Moving to portfolio roles requires further investment responsibility.",
+      "prepare": "Start here: build a short investment or credit thesis with valuation, risks and what would change your view.",
+      "weights": [
+        5,
+        5,
+        2,
+        3,
+        2,
+        2,
+        4,
+        2,
+        4,
+        5
+      ]
+    },
+    {
+      "id": "private",
+      "name": "Private equity & venture capital",
+      "office": "TYPICALLY FRONT OFFICE / PRIVATE MARKETS",
+      "work": "Assess investments in private companies, support due diligence and monitor portfolio businesses. Buyout, growth and venture strategies have very different investment criteria.",
+      "overlap": "Banking shares transaction and valuation skills. Venture can emphasise markets, founders and growth; buyouts place greater weight on cash flow, leverage and operations.",
+      "future": "Explore investment and portfolio-support roles. Direct undergraduate opportunities exist but vary; prior transaction or operating experience can matter.",
+      "prepare": "Start here: assess a business model, investment rationale, main risks and due-diligence questions.",
+      "weights": [
+        5,
+        3,
+        3,
+        3,
+        2,
+        5,
+        4,
+        2,
+        4,
+        4
+      ]
+    },
+    {
+      "id": "corporate-banking",
+      "name": "Corporate banking",
+      "office": "TYPICALLY FRONT OFFICE / CORPORATE CLIENTS",
+      "work": "Work with companies on lending, cash management and related banking services. Roles connect credit analysis, sector understanding, client needs and relationship management.",
+      "overlap": "Investment banking focuses more on transactions and capital markets; corporate banking often centres on ongoing banking relationships and credit.",
+      "future": "Explore coverage, credit analysis and product teams. Experience can lead to relationship management or more specialised financing work.",
+      "prepare": "Start here: assess a company’s ability to service debt and explain a relevant banking need.",
+      "weights": [
+        4,
+        2,
+        5,
+        2,
+        1,
+        4,
+        4,
+        2,
+        4,
+        5
+      ]
+    },
+    {
+      "id": "treasury",
+      "name": "Treasury",
+      "office": "CORPORATE FINANCE OR BANK TREASURY / VARIES",
+      "work": "Manage cash, liquidity, funding and financial exposures. Corporate treasury supports a business; bank treasury manages the institution’s balance sheet and funding needs.",
+      "overlap": "Risk measures exposures; finance reports performance; markets teams execute instruments. Treasury connects those functions to liquidity and funding decisions.",
+      "future": "Explore cash management, liquidity, asset-liability management or funding. Responsibilities depend on the organisation.",
+      "prepare": "Start here: explain cash versus profit and how interest-rate or currency risk affects a business.",
+      "weights": [
+        3,
+        4,
+        2,
+        3,
+        3,
+        2,
+        5,
+        4,
+        5,
+        4
+      ]
+    },
+    {
+      "id": "fpna",
+      "name": "FP&A & corporate finance",
+      "office": "INTERNAL FINANCE / OFFICE LABELS OFTEN UNHELPFUL",
+      "work": "Support business decisions through budgeting, forecasts, performance analysis and financial planning. Some corporate finance teams also handle investment appraisal and transactions.",
+      "overlap": "Accounting provides actual results; strategy sets direction; treasury manages cash and funding. FP&A turns financial information into operating decisions.",
+      "future": "Explore financial analyst, business partnering and planning roles. Broader finance leadership normally requires substantial experience.",
+      "prepare": "Start here: explain a variance, forecast a driver and turn the result into a business recommendation.",
+      "weights": [
+        5,
+        2,
+        3,
+        3,
+        3,
+        2,
+        4,
+        2,
+        5,
+        5
+      ]
+    },
+    {
+      "id": "actuarial",
+      "name": "Actuarial",
+      "office": "INSURANCE, PENSIONS & CONSULTING / VARIES",
+      "work": "Use statistics and financial modelling to assess uncertain long-term costs and risks. Work may cover insurance pricing, reserving, capital, pensions or investment advice.",
+      "overlap": "Risk and quant share modelling; consulting adds client communication. Actuarial work has its own professional qualification and practice context.",
+      "future": "Explore insurance, pensions, investment consulting or risk routes. Qualification requirements and study support vary by employer.",
+      "prepare": "Start here: explain a probability model, its assumptions and how you would communicate uncertainty.",
+      "weights": [
+        3,
+        2,
+        3,
+        5,
+        4,
+        1,
+        5,
+        1,
+        5,
+        4
+      ]
+    },
+    {
+      "id": "compliance",
+      "name": "Compliance & financial crime",
+      "office": "OFTEN MIDDLE OFFICE / CONTROL FUNCTIONS",
+      "work": "Help firms understand obligations, manage conduct and financial-crime risks, and monitor controls. Compliance, legal and internal audit are related but separate functions.",
+      "overlap": "Risk, operations and business teams implement controls. Compliance interprets and challenges conduct and regulatory processes; audit independently evaluates them.",
+      "future": "Explore advisory compliance, monitoring, anti-money laundering or sanctions. Specialisation follows the business and regulatory area.",
+      "prepare": "Start here: work through a control failure, evidence requirements and a sensible escalation path.",
+      "weights": [
+        1,
+        2,
+        3,
+        2,
+        2,
+        1,
+        5,
+        2,
+        5,
+        5
+      ]
+    },
+    {
+      "id": "operations",
+      "name": "Operations & trade support",
+      "office": "OFTEN BACK OR MIDDLE OFFICE / VARIES",
+      "work": "Make financial activity work reliably: settlements, reconciliations, asset servicing, collateral and exception management. Some roles sit close to desks; others support firm-wide processing.",
+      "overlap": "Trading initiates activity; technology builds systems; operations ensures records and processes reconcile and issues are resolved.",
+      "future": "Explore product operations, trade support, control and process improvement. Moves across functions depend on demonstrated skills and opportunities.",
+      "prepare": "Start here: explain a trade lifecycle, investigate a mismatch and propose a control.",
+      "weights": [
+        2,
+        2,
+        3,
+        2,
+        3,
+        2,
+        4,
+        3,
+        5,
+        4
+      ]
+    },
+    {
+      "id": "technology",
+      "name": "Finance technology & data",
+      "office": "CROSS-FUNCTIONAL / TEAM DEPENDENT",
+      "work": "Build and maintain software, data pipelines and analytical tools used by financial firms. Engineering, data science, analytics and production support have different responsibilities.",
+      "overlap": "Quant uses models; operations needs reliable workflows; every business needs sound data. Technology focuses on robust systems and delivery.",
+      "future": "Explore software engineering, data engineering, analytics and platform roles. Product knowledge can complement technical expertise.",
+      "prepare": "Start here: build a small data workflow with clear documentation, checks and reproducible output.",
+      "weights": [
+        2,
+        2,
+        2,
+        4,
+        5,
+        1,
+        4,
+        2,
+        5,
+        3
+      ]
+    },
+    {
+      "id": "consulting",
+      "name": "Financial services consulting",
+      "office": "CLIENT ADVISORY / OFFICE LABELS VARY",
+      "work": "Help financial institutions solve strategy, risk, technology or operational problems. Work often combines research, analysis, stakeholder conversations and recommendations.",
+      "overlap": "Specialist risk, finance and technology knowledge can be used in advisory work. Consultants support a client’s decision rather than owning every ongoing function.",
+      "future": "Explore specialist consulting teams and project delivery. Later paths depend on the capabilities and industry knowledge you build.",
+      "prepare": "Start here: structure an ambiguous problem, prioritise analysis and present a defensible recommendation.",
+      "weights": [
+        4,
+        2,
+        5,
+        3,
+        3,
+        4,
+        4,
+        2,
+        4,
+        5
+      ]
+    }
+  ]
+}

@@ -25,8 +25,12 @@ export function parseFunnel(raw: string | null): FunnelState {
   }
 }
 
+// Keep the user's progress across client-side navigation when a write fails.
+let temporaryState: FunnelState | null = null;
+
 export function loadFunnel(): FunnelState {
   try {
+    if (temporaryState) return temporaryState;
     return parseFunnel(window.localStorage.getItem(FUNNEL_KEY));
   } catch {
     return emptyFunnel();
@@ -36,16 +40,19 @@ export function loadFunnel(): FunnelState {
 export function saveFunnel(s: FunnelState): boolean {
   try {
     window.localStorage.setItem(FUNNEL_KEY, JSON.stringify(s));
+    temporaryState = null;
     return true;
   } catch {
+    temporaryState = s;
     return false;
   }
 }
 
 export function clearFunnel() {
+  temporaryState = null;
   try {
     window.localStorage.removeItem(FUNNEL_KEY);
   } catch {
-    /* storage unavailable */
+    temporaryState = emptyFunnel();
   }
 }

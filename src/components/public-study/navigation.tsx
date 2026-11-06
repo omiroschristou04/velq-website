@@ -4,7 +4,7 @@ import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Wordmark } from "@/components/velq";
 
-const links = [["#pathway","Spring weeks"],["#approach","The approach"],["#inside","Inside VELQ"],["#membership","Membership"]];
+const links = [["#approach","Career finder"],["#inside","Inside VELQ"],["#membership","Membership"]];
 export function StudyNavigation() {
   const [open,setOpen]=useState(false);
   const dialog=useRef<HTMLDivElement>(null);
@@ -25,5 +25,5 @@ export function StudyNavigation() {
     document.addEventListener("keydown",key);
     return()=>{document.body.style.overflow=previous;document.removeEventListener("keydown",key);trigger.current?.focus();};
   },[open]);
-  return <><header className="study-nav"><Link to="/" aria-label="VELQ home" className="compact-wordmark"><Wordmark /></Link><nav aria-label="Primary">{links.map(([url,text])=><a href={url} key={url}>{text}</a>)}</nav><Button asChild variant="link" className="nav-questionnaire"><Link to="/find-your-roles">Find your roles <ArrowUpRight/></Link></Button><Button ref={trigger} variant="ghost" size="icon" className="menu-trigger" aria-label="Open navigation" aria-expanded={open} onClick={()=>setOpen(true)}><Menu/></Button></header>{open && <div ref={dialog} className="study-menu" role="dialog" aria-modal="true" aria-label="Navigation"><div className="menu-top"><Wordmark className="text-[28px]" /><Button variant="ghost" size="icon" aria-label="Close navigation" onClick={()=>setOpen(false)}><X/></Button></div><nav>{links.map(([url,text])=><a href={url} key={url} onClick={()=>setOpen(false)}>{text}</a>)}<Link to="/find-your-roles">Find your roles ↗</Link></nav><a href="mailto:velqfinance@gmail.com">velqfinance@gmail.com</a><p>Preview only. Membership is not yet open.</p></div>}</>;
+  return <><header className="study-nav"><Link to="/" aria-label="VELQ home" className="compact-wordmark"><Wordmark /></Link><nav aria-label="Primary">{links.map(([url,text])=><a href={url} key={url}>{text}</a>)}</nav><Button asChild variant="link" className="nav-questionnaire"><Link to="/find-your-roles">Find your finance roles <ArrowUpRight/></Link></Button><Button ref={trigger} variant="ghost" size="icon" className="menu-trigger" aria-label="Open navigation" aria-expanded={open} onClick={()=>setOpen(true)}><Menu/></Button></header>{open && <div ref={dialog} className="study-menu" role="dialog" aria-modal="true" aria-label="Navigation"><div className="menu-top"><Wordmark className="text-[28px]" /><Button variant="ghost" size="icon" aria-label="Close navigation" onClick={()=>setOpen(false)}><X/></Button></div><nav>{links.map(([url,text])=><a href={url} key={url} onClick={()=>setOpen(false)}>{text}</a>)}<Link to="/find-your-roles">Find your finance roles ↗</Link></nav><a href="mailto:velqfinance@gmail.com">velqfinance@gmail.com</a><p>Paid checkout is closed on this website.</p></div>}</>;
 }

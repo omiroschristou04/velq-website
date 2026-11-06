@@ -1,28 +1,31 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { emptyFunnel, loadFunnel, saveFunnel, clearFunnel, type FunnelState } from "./funnel-storage";
 
-/** Loads the public funnel from localStorage after hydration; `ready` is false until then. */
+/** Persist a confirmation before navigating to the membership route. */
 export function useFunnel() {
   const [state, setState] = useState<FunnelState>(emptyFunnel);
+  const current = useRef(state);
   const [ready, setReady] = useState(false);
   const [saved, setSaved] = useState(true);
 
   useEffect(() => {
-    setState(loadFunnel());
+    current.current = loadFunnel();
+    setState(current.current);
     setReady(true);
   }, []);
 
   const update = useCallback((fn: (s: FunnelState) => FunnelState) => {
-    setState((s) => {
-      const next = fn(s);
-      setSaved(saveFunnel(next));
-      return next;
-    });
+    const next = fn(current.current);
+    current.current = next;
+    setSaved(saveFunnel(next));
+    setState(next);
   }, []);
 
   const reset = useCallback(() => {
     clearFunnel();
-    setState(emptyFunnel());
+    current.current = emptyFunnel();
+    setState(current.current);
+    setSaved(true);
   }, []);
 
   return { state, ready, saved, update, reset };

@@ -58,8 +58,8 @@ function FindYourRoles() {
     if (!v.ok) {
       if (v.reason === "unanswered") {
         const miss = state.answers.findIndex((a) => a === null);
-        setError(`Question ${miss + 1} still needs an answer.`);
-        return go(miss);
+        go(miss);
+        return setError(`Question ${miss + 1} still needs an answer.`);
       }
       return setError(`${v.message} You’ve marked ${state.answers.filter((a) => a === 0).length} as not tried yet. Go back and rate a few more if you can.`);
     }
@@ -115,7 +115,7 @@ function FindYourRoles() {
         </details>
 
         <div className="mt-8 flex flex-wrap items-center justify-between gap-3 text-sm text-muted-foreground">
-          <p>{saved ? "Your answers stay in this browser. No email, no account." : "This browser isn’t saving answers, so they’ll be lost if you leave the page."}</p>
+          <p>{saved ? "Your answers stay in this browser. No email, no account." : "Your answers are temporary in this tab. Refreshing or closing it clears them."}</p>
           <button type="button" className="link-underline text-foreground" onClick={() => { if (confirm("Clear all answers and chosen roles?")) reset(); }}>Clear answers</button>
         </div>
         <p className="mt-6 text-sm"><Link to="/" className="link-underline">← Back to home</Link></p>

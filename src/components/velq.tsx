@@ -12,7 +12,7 @@ export function Wordmark({ className = "" }: { className?: string }) {
 }
 
 export function PreviewNote({ className = "" }: { className?: string }) {
-  return <p className={`label text-muted-foreground ${className}`}>Preview only. Membership is not yet open.</p>;
+  return <p className={`label text-muted-foreground ${className}`}>Paid checkout is closed on this website.</p>;
 }
 
 /** Scroll-reveal wrapper; content is visible without JS and with reduced motion. */

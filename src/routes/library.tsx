@@ -23,7 +23,8 @@ function LibraryPlaceholder() {
         <FunnelHeading>Member library</FunnelHeading>
         <p className="mt-5 text-xl">The full library is available through your Whop membership.</p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <Link to="/your-roles" className="btn-ink">Back to your results</Link>
+          <a className="btn-ink" href="https://whop.com/velq-website-onrender-com/exp_64cDl3rcw2jNzk/app/">Open member library on Whop</a>
+          <Link to="/your-roles" className="btn-line">Back to your results</Link>
           <Link to="/find-your-roles" className="btn-line">Find your roles</Link>
         </div>
       </div>

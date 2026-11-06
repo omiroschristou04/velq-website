@@ -80,7 +80,7 @@ function Membership() {
               <a href={href} className="btn-ink mt-6 w-full justify-center" rel="noopener">Continue to Whop <span aria-hidden="true">→</span></a>
             ) : (
               <>
-                <p className="mt-6 font-semibold" role="status">Checkout is being prepared</p>
+                <p className="mt-6 font-semibold" role="status">Paid checkout is closed on this website.</p>
                 <button type="button" disabled aria-disabled="true" className="btn-ink mt-3 w-full cursor-not-allowed justify-center opacity-50">Continue to Whop</button>
               </>
             )}

@@ -6,7 +6,7 @@ const steps = [
 ];
 
 export function ProcessScene() {
-  return <section id="approach" data-scene="process" className="process-scene">
+  return <section data-scene="process" className="process-scene">
     <div className="process-pin">
       <div className="process-preface"><div className="route-caption">Exploring <span aria-hidden="true">────────→</span> Focused preparation</div><p>A more coherent process.<br/>Not a promise of an offer.</p></div>
       <h2 className="study-title">From scattered,<br/><em>to a next step.</em></h2>

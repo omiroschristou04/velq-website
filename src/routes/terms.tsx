@@ -48,7 +48,7 @@ function Terms() {
           <section aria-labelledby="t-account" className="mt-12 border-t border-ink pt-8">
             <h2 id="t-account" className="headline text-2xl md:text-3xl">Your account and records</h2>
             <p className="mt-5 leading-relaxed">Use your own Whop account and keep your login private. A current browser and internet connection are required. Your questionnaire answers, role choices, progress and story drafts currently save in the browser on your device. Use the available export/import tools to keep a backup. Automatic cross-device synchronisation is not included.</p>
-            <p className="mt-4 leading-relaxed">The Excel application record is downloadable. Embedded PDF attachments have been tested in Windows desktop Excel; compatibility varies across versions and other spreadsheet applications. Keep separate copies of your submitted documents.</p>
+            <p className="mt-4 leading-relaxed">The downloadable Excel tracker is a blank workbook; it does not include your documents. It reserves cells for manually inserting CV and cover-letter PDF icons in desktop Excel. The workbook’s Start here sheet records a test in one Windows desktop setup; behaviour can vary across versions and spreadsheet apps. Keep separate copies of your submitted files.</p>
             <p className="mt-4 leading-relaxed">The reading library has no download button. Screenshots and copying cannot be completely prevented.</p>
           </section>
 

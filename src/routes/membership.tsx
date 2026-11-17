@@ -1,5 +1,5 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { FunnelHeading, FunnelShell } from "@/components/funnel-shell";
 import { PRICE, checkoutHref } from "@/lib/velq/checkout-config";
 import { roleById, validateAnswers } from "@/lib/velq/roles";
@@ -64,7 +64,7 @@ function Membership() {
         <aside className="border-2 border-ink p-6 lg:col-span-5" aria-labelledby="inv-h">
           <section aria-labelledby="inv-h">
             <h2 id="inv-h" className="headline text-3xl [word-spacing:0.12em]">Request pilot access</h2>
-            <p className="mt-3 text-lg">Interested in testing the full library for 180 days at no charge? Ask for a place in the pilot.</p>
+            <p className="mt-3 text-lg">Interested in a no-charge pilot place? Ask if one is available.</p>
             <p className="mt-4 text-sm text-muted-foreground">Requests are reviewed individually. Sending an email does not approve access. If a place is approved, joining instructions will be sent privately. Your shortlist and answers are not attached to the request.</p>
             <a href={freeHref} className="btn-ink mt-6 w-full justify-center" rel="noopener">Request a free pilot place <span aria-hidden="true">→</span></a>
             <p className="mt-4 text-sm text-muted-foreground">Access is granted separately, only after individual approval. Never share a public claim link; use only private joining instructions provided to an approved tester.</p>

@@ -1,7 +1,7 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { FunnelHeading, FunnelShell } from "@/components/funnel-shell";
-import { PRICE, checkoutHref } from "@/lib/velq/checkout-config";
+import { PRICE } from "@/lib/velq/checkout-config";
 import { roleById, validateAnswers } from "@/lib/velq/roles";
 import { useFunnel } from "@/lib/velq/use-funnel";
 import { inviteRequestHref } from "@/lib/velq/invite";
@@ -41,7 +41,6 @@ function Membership() {
   }, [ready, ok, state.answers, navigate]);
 
   if (!ready || !ok) return <FunnelShell current={2}><p className="text-muted-foreground">Checking your shortlist…</p></FunnelShell>;
-  const href = checkoutHref();
   const freeHref = inviteRequestHref();
 
   return (

@@ -88,6 +88,7 @@ export interface FileRouteTypes {
     | '/find-your-roles'
     | '/library'
     | '/membership'
+    | '/privacy'
     | '/terms'
     | '/your-roles'
   fileRoutesByTo: FileRoutesByTo
@@ -177,6 +178,7 @@ const rootRouteChildren: RootRouteChildren = {
   FindYourRolesRoute: FindYourRolesRoute,
   LibraryRoute: LibraryRoute,
   MembershipRoute: MembershipRoute,
+  PrivacyRoute: PrivacyRoute,
   TermsRoute: TermsRoute,
   YourRolesRoute: YourRolesRoute,
 }

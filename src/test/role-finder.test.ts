@@ -119,7 +119,8 @@ describe("manual pilot request", () => {
     expect(PILOT_REQUEST_HREF).not.toContain("whop.com");
     expect(PILOT_REQUEST_HREF).not.toContain("checkout");
     expect(PILOT_REQUEST_HREF).not.toContain("VELQ1:");
-    expect(PILOT_REQUEST_HREF).toContain("sending%20an%20email");
+    expect(PILOT_REQUEST_HREF).not.toContain("shortlist");
+    expect(PILOT_REQUEST_HREF).not.toContain("answers");
   });
   it("paid checkout stays off", () => { expect(RR2).toBe(false); expect(VU2).toBe(""); expect(ch2()).toBeNull(); });
 });

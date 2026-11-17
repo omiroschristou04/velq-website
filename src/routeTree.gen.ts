@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as FindYourRolesRouteImport } from './routes/find-your-roles'
 import { Route as LibraryRouteImport } from './routes/library'
 import { Route as MembershipRouteImport } from './routes/membership'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as YourRolesRouteImport } from './routes/your-roles'
 
@@ -36,6 +37,11 @@ const MembershipRoute = MembershipRouteImport.update({
   path: '/membership',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/find-your-roles': typeof FindYourRolesRoute
   '/library': typeof LibraryRoute
   '/membership': typeof MembershipRoute
+  '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/your-roles': typeof YourRolesRoute
 }
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/find-your-roles': typeof FindYourRolesRoute
   '/library': typeof LibraryRoute
   '/membership': typeof MembershipRoute
+  '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/your-roles': typeof YourRolesRoute
 }
@@ -69,6 +77,7 @@ export interface FileRoutesById {
   '/find-your-roles': typeof FindYourRolesRoute
   '/library': typeof LibraryRoute
   '/membership': typeof MembershipRoute
+  '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/your-roles': typeof YourRolesRoute
 }
@@ -104,6 +113,7 @@ export interface RootRouteChildren {
   FindYourRolesRoute: typeof FindYourRolesRoute
   LibraryRoute: typeof LibraryRoute
   MembershipRoute: typeof MembershipRoute
+  PrivacyRoute: typeof PrivacyRoute
   TermsRoute: typeof TermsRoute
   YourRolesRoute: typeof YourRolesRoute
 }
@@ -136,6 +146,13 @@ declare module '@tanstack/react-router' {
       path: '/membership'
       fullPath: '/membership'
       preLoaderRoute: typeof MembershipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/terms': {

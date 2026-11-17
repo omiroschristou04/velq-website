@@ -4,7 +4,7 @@ import { FunnelHeading, FunnelShell } from "@/components/funnel-shell";
 import { PRICE, checkoutHref } from "@/lib/velq/checkout-config";
 import { roleById, validateAnswers } from "@/lib/velq/roles";
 import { useFunnel } from "@/lib/velq/use-funnel";
-import { freeClaimHref, hasInvite } from "@/lib/velq/invite";
+import { inviteRequestHref } from "@/lib/velq/invite";
 import { ShortlistTransfer } from "@/components/shortlist-transfer";
 
 export const Route = createFileRoute("/membership")({
@@ -34,8 +34,6 @@ const includes = [
 function Membership() {
   const { state, ready } = useFunnel();
   const navigate = useNavigate();
-  const [invited, setInvited] = useState(false);
-  useEffect(() => { try { setInvited(hasInvite(window.sessionStorage)); } catch { setInvited(false); } }, []);
   const ok = validateAnswers(state.answers).ok && state.confirmed && state.roles.length > 0;
   useEffect(() => {
     if (!ready || ok) return;
@@ -44,7 +42,7 @@ function Membership() {
 
   if (!ready || !ok) return <FunnelShell current={2}><p className="text-muted-foreground">Checking your shortlist…</p></FunnelShell>;
   const href = checkoutHref();
-  const freeHref = freeClaimHref(invited, ok);
+  const freeHref = inviteRequestHref();
 
   return (
     <FunnelShell current={2}>
@@ -65,11 +63,11 @@ function Membership() {
         </div>
         {freeHref ? (
           <aside className="border-2 border-ink p-6 lg:col-span-5" aria-labelledby="inv-h">
-            <h2 id="inv-h" className="headline text-3xl [word-spacing:0.12em]">Your invitation</h2>
-            <p className="mt-3 text-lg">180 days free. Full library access. No card, paid renewal or cancellation required. Access ends automatically.</p>
-            <p className="mt-4 text-sm text-muted-foreground">Copy your shortlist code first. After joining, choose Bring your shortlist in the library and paste it. Your roles aren’t sent to Whop automatically.</p>
-            <a href={freeHref} className="btn-ink mt-6 w-full justify-center" rel="noopener">Activate free access on Whop <span aria-hidden="true">→</span></a>
-            <p className="mt-4 text-sm text-muted-foreground">You’ll sign in or create a Whop account. The library opens only once Whop confirms your access.</p>
+            <h2 id="inv-h" className="headline text-3xl [word-spacing:0.12em]">Request pilot access</h2>
+            <p className="mt-3 text-lg">Interested in testing the full library for 180 days at no charge? Ask for a place in the pilot.</p>
+            <p className="mt-4 text-sm text-muted-foreground">Requests are reviewed individually. Sending an email does not approve access. If a place is approved, joining instructions will be sent privately. Your shortlist and answers are not attached to the request.</p>
+            <a href={freeHref} className="btn-ink mt-6 w-full justify-center" rel="noopener">Request a free pilot place <span aria-hidden="true">→</span></a>
+            <p className="mt-4 text-sm text-muted-foreground">Access is granted separately, only after individual approval. Never share a public claim link; use only private joining instructions provided to an approved tester.</p>
           </aside>
         ) : (
       <aside className="border-2 border-ink p-6 lg:col-span-5">

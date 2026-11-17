@@ -74,6 +74,7 @@ function Terms() {
       <footer className="border-t border-ink">
         <div className="mx-auto flex max-w-[1100px] flex-wrap justify-between gap-3 px-5 py-6 md:px-8">
           <p className="text-sm text-muted-foreground">Support: <a href="mailto:velqfinance@gmail.com" className="link-underline">velqfinance@gmail.com</a></p>
+          <Link to="/privacy" className="link-underline text-sm text-muted-foreground">Privacy preview</Link>
           <PreviewNote />
         </div>
       </footer>

@@ -1,10 +1,10 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { FunnelHeading, FunnelShell } from "@/components/funnel-shell";
-import { PRICE, checkoutHref } from "@/lib/velq/checkout-config";
+import { PRICE } from "@/lib/velq/checkout-config";
 import { roleById, validateAnswers } from "@/lib/velq/roles";
 import { useFunnel } from "@/lib/velq/use-funnel";
-import { freeClaimHref, hasInvite } from "@/lib/velq/invite";
+import { inviteRequestHref } from "@/lib/velq/invite";
 import { ShortlistTransfer } from "@/components/shortlist-transfer";
 
 export const Route = createFileRoute("/membership")({
@@ -34,8 +34,6 @@ const includes = [
 function Membership() {
   const { state, ready } = useFunnel();
   const navigate = useNavigate();
-  const [invited, setInvited] = useState(false);
-  useEffect(() => { try { setInvited(hasInvite(window.sessionStorage)); } catch { setInvited(false); } }, []);
   const ok = validateAnswers(state.answers).ok && state.confirmed && state.roles.length > 0;
   useEffect(() => {
     if (!ready || ok) return;
@@ -43,8 +41,7 @@ function Membership() {
   }, [ready, ok, state.answers, navigate]);
 
   if (!ready || !ok) return <FunnelShell current={2}><p className="text-muted-foreground">Checking your shortlist…</p></FunnelShell>;
-  const href = checkoutHref();
-  const freeHref = freeClaimHref(invited, ok);
+  const freeHref = inviteRequestHref();
 
   return (
     <FunnelShell current={2}>
@@ -63,30 +60,24 @@ function Membership() {
             <ul className="mt-3 space-y-2">{includes.map((i) => <li key={i} className="flex gap-3"><span aria-hidden="true" className="text-signal">✓</span>{i}</li>)}</ul>
           </section>
         </div>
-        {freeHref ? (
-          <aside className="border-2 border-ink p-6 lg:col-span-5" aria-labelledby="inv-h">
-            <h2 id="inv-h" className="headline text-3xl [word-spacing:0.12em]">Your invitation</h2>
-            <p className="mt-3 text-lg">180 days free. Full library access. No card, paid renewal or cancellation required. Access ends automatically.</p>
-            <p className="mt-4 text-sm text-muted-foreground">Copy your shortlist code first. After joining, choose Bring your shortlist in the library and paste it. Your roles aren’t sent to Whop automatically.</p>
-            <a href={freeHref} className="btn-ink mt-6 w-full justify-center" rel="noopener">Activate free access on Whop <span aria-hidden="true">→</span></a>
-            <p className="mt-4 text-sm text-muted-foreground">You’ll sign in or create a Whop account. The library opens only once Whop confirms your access.</p>
-          </aside>
-        ) : (
-      <aside className="border-2 border-ink p-6 lg:col-span-5">
+        <aside className="border-2 border-ink p-6 lg:col-span-5" aria-labelledby="inv-h">
+          <section aria-labelledby="inv-h">
+            <h2 id="inv-h" className="headline text-3xl [word-spacing:0.12em]">Request pilot access</h2>
+            <p className="mt-3 text-lg">Interested in a no-charge pilot place? Ask if one is available.</p>
+            <p className="mt-4 text-sm text-muted-foreground">Requests are reviewed individually. Sending an email does not approve access. If a place is approved, joining instructions will be sent privately. Your shortlist and answers are not attached to the request.</p>
+            <a href={freeHref} className="btn-ink mt-6 w-full justify-center" rel="noopener">Request a free pilot place <span aria-hidden="true">→</span></a>
+            <p className="mt-4 text-sm text-muted-foreground">Access is granted separately, only after individual approval. Never share a public claim link; use only private joining instructions provided to an approved tester.</p>
+          </section>
+          <section aria-labelledby="paid-h" className="mt-8 border-t border-ink pt-6">
+            <h2 id="paid-h" className="sr-only">Paid membership</h2>
             <p className="display text-6xl">{PRICE.amount}</p>
             <p className="mt-2 text-lg">{PRICE.period}, after a {PRICE.trial}</p>
             <p className="mt-4 text-sm text-muted-foreground">Your three-day trial starts at checkout. If you don’t cancel before it ends, you’ll be charged {PRICE.amount} and membership renews {PRICE.period} until you cancel. Checkout, billing and cancellation are handled by Whop.</p>
-            {href ? (
-              <a href={href} className="btn-ink mt-6 w-full justify-center" rel="noopener">Continue to Whop <span aria-hidden="true">→</span></a>
-            ) : (
-              <>
-                <p className="mt-6 font-semibold" role="status">Paid checkout is closed on this website.</p>
-                <button type="button" disabled aria-disabled="true" className="btn-ink mt-3 w-full cursor-not-allowed justify-center opacity-50">Continue to Whop</button>
-              </>
-            )}
+            <p className="mt-6 font-semibold" role="status">Paid checkout is closed on this website.</p>
+            <button type="button" disabled aria-disabled="true" className="btn-ink mt-3 w-full cursor-not-allowed justify-center opacity-50">Continue to Whop</button>
             <p className="mt-4 text-sm text-muted-foreground">Your shortlist stays in this browser. It isn’t sent to Whop automatically or saved to a member account.</p>
-          </aside>
-        )}
+          </section>
+        </aside>
       </div>
     </FunnelShell>
   );

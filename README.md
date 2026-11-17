@@ -14,16 +14,22 @@ Rewrite `/*` to `/index.html` so direct client routes and reloads work.
 The public site is a static TanStack Start SPA. No backend, database, Worker, paid server, secrets, analytics or paid membership content are deployed here.
 Fonts ship with the build. The member library remains protected separately through Whop.
 
-## Free tester flow
+## Free pilot request flow
 
-The exact invitation query is implemented in `src/lib/velq/invite.ts` and persists only in that browser tab's sessionStorage.
-After the questionnaire, ranking and a confirmed 1–4-role shortlist, the membership page offers the verified, one-claim free Whop plan.
-It grants 180 days on the same membership product, expires automatically and has no paid renewal.
-Do not consume the sole claim during tests. The student creates their own Whop account and accepts platform terms themselves.
-The shortlist transfer is manual: copy the VELQ1 code, then paste into Bring your shortlist in the protected library.
+The public membership page offers a manual email request only. No Whop claim URL or invite code
+is bundled in current source. Sending the request does not approve access. An authorized
+operator must review each request and grant access privately, one person at a time, through
+Whop's current member-management controls. The exact private grant, duration and revocation
+behavior remain to be verified before the pilot opens.
 
-Paid checkout remains disabled in `src/lib/velq/checkout-config.ts`.
-The invitation is not proof of membership: the member server verifies Whop identity and product access independently.
+The previous free claim URL was exposed in public Git history. Removing it from current files
+does not erase historical copies. Disable or replace the associated free plan before accepting
+public pilot requests. Never use a historic claim URL to grant access.
+
+The shortlist transfer is manual: copy the VELQ1 code, then paste into Bring your shortlist in
+the protected library. Paid checkout remains disabled in `src/lib/velq/checkout-config.ts`.
+The request never proves membership: the member server must verify Whop identity and product
+access independently.
 
 ## Future edits
 

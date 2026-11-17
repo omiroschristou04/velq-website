@@ -1,35 +1,11 @@
 /**
- * Free-tester invitation (hidden pilot). Only the exact flag below is accepted.
- * The claim URL is a fixed constant; it is never read from the URL or storage.
- * This flag only changes what the public membership page shows. It never unlocks
- * paid content: the member library still requires Whop login and product entitlement.
+ * Public pilot requests are only a contact route. They never grant or prove access.
+ * Approval and any membership grant must happen privately, one person at a time.
  */
-export const INVITE_PARAM = "invite";
-export const INVITE_CODE = "velq-first-review";
-export const INVITE_KEY = "velq-invite-v1";
-export const FREE_CLAIM_URL = "https://whop.com/checkout/plan_6NicMNmBO0ZzB";
+export const PILOT_REQUEST_EMAIL = "velqfinance@gmail.com";
+export const PILOT_REQUEST_HREF =
+  `mailto:${PILOT_REQUEST_EMAIL}?subject=VELQ%20pilot%20access%20request&body=Hello%2C%20I%27d%20like%20to%20request%20a%20free%20VELQ%20pilot%20place.%20Please%20let%20me%20know%20whether%20a%20place%20is%20available%20and%20how%20approval%20works.`;
 
-type Store = Pick<Storage, "getItem" | "setItem" | "removeItem">;
-
-/** Reads ?invite= from a search string; stores only the exact flag, clears anything else. */
-export function captureInvite(search: string, store: Store): void {
-  try {
-    const v = new URLSearchParams(search).get(INVITE_PARAM);
-    if (v === null) return;
-    if (v === INVITE_CODE) store.setItem(INVITE_KEY, INVITE_CODE);
-    else store.removeItem(INVITE_KEY);
-  } catch { /* storage unavailable */ }
-}
-
-export function hasInvite(store: Store | undefined): boolean {
-  try {
-    return store?.getItem(INVITE_KEY) === INVITE_CODE;
-  } catch {
-    return false;
-  }
-}
-
-/** Claim link only when invitation is active and a valid shortlist is confirmed. */
-export function freeClaimHref(invited: boolean, shortlistOk: boolean): string | null {
-  return invited && shortlistOk ? FREE_CLAIM_URL : null;
+export function inviteRequestHref(): string {
+  return PILOT_REQUEST_HREF;
 }

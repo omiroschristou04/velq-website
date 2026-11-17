@@ -4,7 +4,7 @@ import { afterEach, expect, it, vi } from "vitest";
 import { Route as Questions } from "@/routes/find-your-roles";
 import { Route as Results } from "@/routes/your-roles";
 import { Route as Membership } from "@/routes/membership";
-import { captureInvite, FREE_CLAIM_URL } from "@/lib/velq/invite";
+import { PILOT_REQUEST_HREF } from "@/lib/velq/invite";
 import { clearFunnel } from "@/lib/velq/funnel-storage";
 
 const { navigate } = vi.hoisted(() => ({ navigate: vi.fn() }));
@@ -23,8 +23,7 @@ afterEach(() => {
   navigate.mockClear();
 });
 
-it.each([false, true])("completes the ten-question journey with invitation = %s", (invited) => {
-  if (invited) captureInvite("?invite=velq-first-review", sessionStorage);
+it("completes the ten-question journey and offers a request, never a public claim route", () => {
   const Finder = Questions.options.component as ComponentType;
   const Ranked = Results.options.component as ComponentType;
   const Offer = Membership.options.component as ComponentType;
@@ -43,10 +42,10 @@ it.each([false, true])("completes the ten-question journey with invitation = %s"
   expect(navigate).toHaveBeenCalledWith({ to: "/membership" });
   view.rerender(<Offer />);
   expect(screen.getByLabelText("Your shortlist code")).toHaveValue("VELQ1:ib");
-  if (invited) {
-    expect(screen.getByRole("link", { name: /Activate free access/ })).toHaveAttribute("href", FREE_CLAIM_URL);
-  } else {
-    expect(screen.getByRole("button", { name: "Continue to Whop" })).toBeDisabled();
-    expect(screen.queryByRole("link", { name: /Activate free access/ })).toBeNull();
-  }
+  const request = screen.getByRole("link", { name: /Request a free pilot place/ });
+  expect(request).toHaveAttribute("href", PILOT_REQUEST_HREF);
+  expect(request.getAttribute("href")).toMatch(/^mailto:/);
+  expect(request.getAttribute("href")).not.toContain("whop");
+  expect(screen.getByText(/Sending an email does not approve access/)).toBeVisible();
+  expect(screen.getByRole("button", { name: "Continue to Whop" })).toBeDisabled();
 });

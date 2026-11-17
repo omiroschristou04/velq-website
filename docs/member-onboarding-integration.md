@@ -19,6 +19,24 @@ button (`src/lib/velq/shortlist-code.ts`, `src/components/shortlist-transfer.tsx
 - The member pastes it once in the Whop library ("Bring your shortlist"); it is saved on that
   device only. The receiving side must re-validate the same format and allowlist.
 
+## Implemented: manual pilot request route
+
+The public membership page offers a `mailto:` request only. It does not expose a Whop checkout
+URL, capture a query-string invite code, approve a request, or grant membership. The request
+email contains no role shortlist or questionnaire answers. The page says that each request is
+reviewed individually and only private joining instructions may follow approval. Paid checkout
+remains disabled.
+
+**This is a request channel, not an automated approval system.** An authorized operator must
+review each request and use Whop's current private member-management flow to grant access to one
+person at a time. The exact dashboard flow, access duration, product entitlement and revocation
+must be verified before approving anyone.
+
+The old free claim URL existed in public Git history. Removing it from current source does not
+erase historic copies. Disable or replace the associated free plan before treating the request
+route as safe. Do not reuse a historic claim URL. This must be verified in the Whop owner account;
+the static repository cannot disable or revoke the plan.
+
 ## Not implemented: automatic account sync
 
 No automatic transfer, cross-device or member-account synchronisation exists yet.

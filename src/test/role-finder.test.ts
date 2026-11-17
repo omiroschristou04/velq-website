@@ -109,24 +109,18 @@ describe("public source", () => {
   });
 });
 
-import { captureInvite, hasInvite, freeClaimHref, FREE_CLAIM_URL, INVITE_KEY } from "@/lib/velq/invite";
+import { inviteRequestHref, PILOT_REQUEST_HREF } from "@/lib/velq/invite";
 import { checkoutHref as ch2, RELEASE_READY as RR2, VERIFIED_CHECKOUT_URL as VU2 } from "@/lib/velq/checkout-config";
-describe("free invitation", () => {
-  const mk = () => { const m = new Map<string, string>(); return { getItem: (k: string) => m.get(k) ?? null, setItem: (k: string, v: string) => void m.set(k, v), removeItem: (k: string) => void m.delete(k) }; };
-  it("captures only the exact flag and survives later pages", () => {
-    const s = mk(); captureInvite("?invite=velq-first-review", s); expect(hasInvite(s)).toBe(true);
-    captureInvite("", s); expect(hasInvite(s)).toBe(true);
-  });
-  it("invalid values clear and never store arbitrary data", () => {
-    const s = mk(); captureInvite("?invite=velq-first-review", s); captureInvite("?invite=https://evil.example", s);
-    expect(hasInvite(s)).toBe(false); expect(s.getItem(INVITE_KEY)).toBeNull();
-    captureInvite("?invite=VELQ-FIRST-REVIEW", s); expect(hasInvite(s)).toBe(false);
-  });
-  it("claim link requires invite AND valid shortlist, exact URL only", () => {
-    expect(freeClaimHref(false, true)).toBeNull();
-    expect(freeClaimHref(true, false)).toBeNull();
-    expect(freeClaimHref(true, true)).toBe("https://whop.com/checkout/plan_6NicMNmBO0ZzB");
-    expect(FREE_CLAIM_URL).toBe("https://whop.com/checkout/plan_6NicMNmBO0ZzB");
+
+describe("manual pilot request", () => {
+  it("provides a contact route only and never embeds membership access", () => {
+    expect(inviteRequestHref()).toBe(PILOT_REQUEST_HREF);
+    expect(PILOT_REQUEST_HREF).toMatch(/^mailto:velqfinance@gmail\.com\?/);
+    expect(PILOT_REQUEST_HREF).not.toContain("whop.com");
+    expect(PILOT_REQUEST_HREF).not.toContain("checkout");
+    expect(PILOT_REQUEST_HREF).not.toContain("VELQ1:");
+    expect(PILOT_REQUEST_HREF).not.toContain("shortlist");
+    expect(PILOT_REQUEST_HREF).not.toContain("answers");
   });
   it("paid checkout stays off", () => { expect(RR2).toBe(false); expect(VU2).toBe(""); expect(ch2()).toBeNull(); });
 });

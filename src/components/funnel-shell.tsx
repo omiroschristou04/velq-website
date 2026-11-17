@@ -32,6 +32,7 @@ export function FunnelShell({ current, children }: { current: 0 | 1 | 2 | null; 
           <p className="text-sm text-muted-foreground">Your answers stay in this browser.</p>
           <p className="text-sm text-muted-foreground">Support: <a href="mailto:velqfinance@gmail.com" className="link-underline">velqfinance@gmail.com</a></p>
           <Link to="/terms" className="link-underline text-sm text-muted-foreground">Terms preview</Link>
+          <Link to="/privacy" className="link-underline text-sm text-muted-foreground">Privacy preview</Link>
           <PreviewNote />
         </div>
       </footer>
